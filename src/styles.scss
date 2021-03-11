@@ -3,7 +3,7 @@
 /*================================================
 Default CSS
 =================================================*/
-$main-color: #ff2c6f;
+$main-color: #006eff;
 $white-color: #ffffff;
 $black-color: #000000;
 $paragraph-color: #828893;
@@ -3225,7 +3225,7 @@ Sidebar CSS
                 li {
                     position: relative;
                     padding-left: 100px;
-                    padding-bottom: 15px;
+                    padding-bottom: 1px;
                     margin-bottom: 15px;
 
                     a {
@@ -3265,7 +3265,6 @@ Sidebar CSS
         }
         &.widget_tag_cloud {
             .tagcloud {
-                a {
                     border: 1px dashed #eeeeee;
                     padding: 6px 20px;
                     margin-top: 6px;
@@ -3281,7 +3280,6 @@ Sidebar CSS
                         color: $white-color;
                         border-color: $main-color;
                     }
-                }
             }
         }
         &.widget_archive {

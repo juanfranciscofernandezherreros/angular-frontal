@@ -3,24 +3,30 @@ import {Category} from "src/app/models/category";
 import {Article} from "src/app/models/articles";
 import {CategoriesService} from "src/app/services/categories/categories.service";
 import {ArticlesService} from "src/app/services/articles/articles.service";
+import {TagsService} from "src/app/services/tags/tags.service";
+import { Tags } from 'src/app/models/tags';
+
 @Component({
   selector: 'app-blog-two',
   templateUrl: './blog-two.component.html',
   styleUrls: ['./blog-two.component.scss'],
-  providers: [CategoriesService,ArticlesService]
+  providers: [CategoriesService,ArticlesService,TagsService]
 })
 export class BlogTwoComponent implements OnInit {
 
   categories: Category[];
   articlesRandom:Article[];
+  tagsRandom:Tags[];
 
   constructor(
     private categoriesService : CategoriesService , 
     private articlesService : ArticlesService ,
+    private tagsService : TagsService
   ) { }
 
   ngOnInit() {
     this.getAllCategories();
+    this.getAllTagsRandom();
     this.getAllArticlesRandom();
    }
 
@@ -39,6 +45,17 @@ export class BlogTwoComponent implements OnInit {
     this.articlesService.getAllArticlesRandom().subscribe(      
       data=>{      
         this.articlesRandom=data['content'];
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+
+  getAllTagsRandom(){
+    this.tagsService.getAllTagsRandom().subscribe(      
+      data=>{      
+        this.tagsRandom=data['content'];
       },
       (error)=>{
         console.log("Error");
