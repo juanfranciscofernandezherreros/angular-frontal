@@ -143,38 +143,23 @@
                             Articles
                         </h3>
                             <ul>
-                                <div *ngFor="let article of articlesRandom" style="margin:5px">
-                                <li >
+                                <div *ngFor="let article of articlesRandom" >
+                                <li>
                                         <a routerLink="/blog-details/{{article.slug}}">
                                             <img src="https://avurn-ng.envytheme.com/assets/img/blog1.jpg" alt="image">
                                         </a>
                                         <h5><a routerLink="/blog-details/{{article.slug}}">{{article.title}}</a></h5>
                                         <p class="date">{{article.audit.createdOn}}</p>
                                 </li>  
-                            </div>                         
+                                </div>                         
                             </ul>
                     </div>
                     <div class="widget widget_tag_cloud">
                         <h3 class="widget-title">
                             Tags
                         </h3>
-                        <div class="tagcloud">
-                            <a href="#">Error</a>
-                            <a href="#">Cake Bake</a>
-                            <a href="#">Dromzone</a>
-                            <a href="#">File</a>
-                            <a href="#">Yii</a>
-                            <a href="#">Yii2</a>
-                            <a href="#">UUID</a>
-                            <a href="#">Setup</a>
-                            <a href="#">Error</a>
-                            <a href="#">Cake Bake</a>
-                            <a href="#">Dromzone</a>
-                            <a href="#">File</a>
-                            <a href="#">Yii</a>
-                            <a href="#">Yii2</a>
-                            <a href="#">UUID</a>
-                            <a href="#">Setup</a>
+                        <div class="tagcloud" *ngFor="let tags of tagsRandom">
+                            <a routerLink="/tags-details/{{tags.slug}}" style="color:#828893">{{tags.name}}</a>                        
                         </div>
                     </div>
                     <div class="widget widget_archive">
