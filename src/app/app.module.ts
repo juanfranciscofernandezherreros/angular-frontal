@@ -55,7 +55,8 @@ import { DemoSidebarComponent } from './components/layouts/demo-sidebar/demo-sid
 import { HttpClientModule } from '@angular/common/http';
 import { CustomHttpInterceptorService } from './interceptors/CustomHttpInterceptorService';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-
+import { ListArticlesComponent } from './components/list-articles/list-articles.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,11 +108,14 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
     BlogTwoComponent,
     BlogDetailsComponent,
     ErrorComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
+    ListArticlesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [

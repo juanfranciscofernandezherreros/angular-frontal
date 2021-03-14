@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , OnChanges , Input} from '@angular/core';
 import {Category} from "src/app/models/category";
 import {Article} from "src/app/models/articles";
 import {CategoriesService} from "src/app/services/categories/categories.service";
@@ -12,10 +12,14 @@ import { Tags } from 'src/app/models/tags';
   styleUrls: ['./blog-two.component.scss'],
   providers: [CategoriesService,ArticlesService,TagsService]
 })
-export class BlogTwoComponent implements OnInit {
+export class BlogTwoComponent implements OnInit   {
+
+  @Input() someInput: string;
+
 
   categories: Category[];
   articlesRandom:Article[];
+  articles:Article[];
   tagsRandom:Tags[];
 
   constructor(
@@ -29,6 +33,8 @@ export class BlogTwoComponent implements OnInit {
     this.getAllTagsRandom();
     this.getAllArticlesRandom();
    }
+
+  
 
    getAllCategories(){
     this.categoriesService.getAllCategories().subscribe(      
@@ -56,6 +62,17 @@ export class BlogTwoComponent implements OnInit {
     this.tagsService.getAllTagsRandom().subscribe(      
       data=>{      
         this.tagsRandom=data['content'];
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+
+  getAllArticlesByName(){
+    this.articlesService.getAllArticlesByName().subscribe(      
+      data=>{      
+        this.articles=data['content'];
       },
       (error)=>{
         console.log("Error");
