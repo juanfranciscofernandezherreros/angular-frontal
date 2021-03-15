@@ -19,8 +19,8 @@ export class ArticlesService {
         return this.http.get(this.articles+"/api/public/v1/articles/random");
     }
 
-    getAllArticlesByName(){
-        return this.http.get(this.articles+"/api/public/v1/articles?name=pepe");
+    filterArticlesByName(title:String , page:number){
+        return this.http.get(this.articles+"/api/public/v1/articles?title="+title+"&page="+page);
     }
 
 }

@@ -16,6 +16,9 @@ import { FormBuilder, FormGroup, FormControl , Validators} from '@angular/forms'
 })
 export class BlogTwoComponent implements OnInit {
 
+  articles:Article[];
+  page : number = 0;
+  pages: Array<number>;
   articleForm: FormGroup;
   categories: Category[];
   articlesRandom:Article[];
@@ -33,14 +36,55 @@ export class BlogTwoComponent implements OnInit {
   });
 
   ngOnInit() {
+    this.getAllArticlesOrderedByCreationDate(this.mandoForm.get('name').value,0);
     this.getAllCategories();
     this.getAllTagsRandom();
     this.getAllArticlesRandom();
    }
 
    onFormSubmitTitle(): void {
-    console.log('Name:' + this.mandoForm.get('name').value);
+        this.articlesService.filterArticlesByName(this.mandoForm.get('name').value,0).subscribe(      
+        data=>{      
+          this.articles=data['content'];
+          this.pages = new Array(data['totalPages']);    
+        },
+        (error)=>{
+          console.log("Error");
+        }
+      );
   } 
+
+  getAllArticlesOrderedByCreationDate(name:String,page:number){
+    if(name!=null){
+      this.articlesService.filterArticlesByName(this.mandoForm.get('name').value,page).subscribe(      
+        data=>{      
+          this.articles=data['content'];
+          this.pages = new Array(data['totalPages']);    
+        },
+        (error)=>{
+          console.log("Error");
+        }
+      );
+    }else{
+      this.articlesService.getAllArticlesOrderedByCreationDate(page).subscribe(      
+        data=>{      
+          this.articles=data['content'];
+          this.pages = new Array(data['totalPages']);       
+        },
+        (error)=>{
+          console.log("Error");
+        }
+      );
+    }
+    
+  }
+
+  
+  setPage(i,event:any){
+    event.preventDefault();
+    this.page=i;
+    this.getAllArticlesOrderedByCreationDate(this.mandoForm.get('name').value,this.page);    
+  }
 
   getAllCategories(){
     this.categoriesService.getAllCategories().subscribe(      
