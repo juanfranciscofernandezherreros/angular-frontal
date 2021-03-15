@@ -3,7 +3,7 @@
 /*================================================
 Default CSS
 =================================================*/
-$main-color: #ff2c6f;
+$main-color: #006eff;
 $white-color: #ffffff;
 $black-color: #000000;
 $paragraph-color: #828893;
@@ -523,11 +523,6 @@ Main Banner CSS
         }
     }
 }
-.item-bg2 {
-    background: {
-        image: url(assets/img/main-banner2.jpg);
-    }
-}
 .item-bg3 {
     background: {
         image: url(assets/img/main-banner3.jpg);
@@ -861,11 +856,7 @@ Main Banner CSS
             }
             &:nth-child(1) span {
                 background-image: url(assets/img/main-banner8.jpg);
-            }
-            &:nth-child(2) span {
-                background-image: url(assets/img/main-banner2.jpg);
-                animation-delay: 6s;
-            }
+            }           
             &:nth-child(3) span {
                 background-image: url(assets/img/main-banner5.jpg);
                 animation-delay: 12s;
@@ -3225,6 +3216,7 @@ Sidebar CSS
                 li {
                     position: relative;
                     padding-left: 100px;
+                    padding-bottom: 1px;
                     margin-bottom: 15px;
 
                     a {
@@ -3264,7 +3256,6 @@ Sidebar CSS
         }
         &.widget_tag_cloud {
             .tagcloud {
-                a {
                     border: 1px dashed #eeeeee;
                     padding: 6px 20px;
                     margin-top: 6px;
@@ -3280,7 +3271,6 @@ Sidebar CSS
                         color: $white-color;
                         border-color: $main-color;
                     }
-                }
             }
         }
         &.widget_archive {

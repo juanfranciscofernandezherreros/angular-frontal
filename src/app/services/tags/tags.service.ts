@@ -3,16 +3,16 @@ import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
-export class CategoriesService {
+export class TagsService {
 
   public apiUrl: string;
 
-  private categories:string = environment.blogs;
+  private tags:string = environment.blogs;
   
   constructor(private http: HttpClient) { }
 
-  getAllCategories(){
-    return this.http.get(this.categories+"/api/public/v1/categories");
+  getAllTagsRandom(){
+    return this.http.get(this.tags+"/api/public/v1/tags/random");
   }
 
 
