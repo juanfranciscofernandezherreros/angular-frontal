@@ -13,9 +13,9 @@
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar">
                     <div class="widget widget_search">
-                        <form >
-                            <input type="text" class="form-control" placeholder="Search here...">
-                            <button><i class="icofont-search"></i></button>
+                        <form [formGroup]="mandoForm" (ngSubmit)="onFormSubmitTitle()">
+                            <input type="text" class="form-control" formControlName="name" placeholder="Search here...">
+                            <button type="submit"><i class="icofont-search"></i></button>
                         </form>
                     </div>
                     <div class="widget widget_categories">

@@ -1,32 +1,36 @@
-import { Component, OnInit , OnChanges , Input} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Category} from "src/app/models/category";
 import {Article} from "src/app/models/articles";
 import {CategoriesService} from "src/app/services/categories/categories.service";
 import {ArticlesService} from "src/app/services/articles/articles.service";
 import {TagsService} from "src/app/services/tags/tags.service";
 import { Tags } from 'src/app/models/tags';
+import { FormBuilder, FormGroup, FormControl , Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-blog-two',
   templateUrl: './blog-two.component.html',
   styleUrls: ['./blog-two.component.scss'],
   providers: [CategoriesService,ArticlesService,TagsService]
+
 })
-export class BlogTwoComponent implements OnInit   {
+export class BlogTwoComponent implements OnInit {
 
-  @Input() someInput: string;
-
-
+  articleForm: FormGroup;
   categories: Category[];
   articlesRandom:Article[];
-  articles:Article[];
   tagsRandom:Tags[];
 
   constructor(
     private categoriesService : CategoriesService , 
     private articlesService : ArticlesService ,
-    private tagsService : TagsService
+    private tagsService : TagsService,
+    private fb: FormBuilder
   ) { }
+
+  mandoForm = new FormGroup({
+    name: new FormControl(),
+  });
 
   ngOnInit() {
     this.getAllCategories();
@@ -34,9 +38,11 @@ export class BlogTwoComponent implements OnInit   {
     this.getAllArticlesRandom();
    }
 
-  
+   onFormSubmitTitle(): void {
+    console.log('Name:' + this.mandoForm.get('name').value);
+  } 
 
-   getAllCategories(){
+  getAllCategories(){
     this.categoriesService.getAllCategories().subscribe(      
       data=>{      
         this.categories=data['content'];
@@ -62,17 +68,6 @@ export class BlogTwoComponent implements OnInit   {
     this.tagsService.getAllTagsRandom().subscribe(      
       data=>{      
         this.tagsRandom=data['content'];
-      },
-      (error)=>{
-        console.log("Error");
-      }
-    );
-  }
-
-  getAllArticlesByName(){
-    this.articlesService.getAllArticlesByName().subscribe(      
-      data=>{      
-        this.articles=data['content'];
       },
       (error)=>{
         console.log("Error");
