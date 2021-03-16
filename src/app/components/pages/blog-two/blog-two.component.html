@@ -40,7 +40,7 @@
                 <div class="sidebar">
                     <div class="widget widget_search">
                         <form [formGroup]="mandoForm" (ngSubmit)="onFormSubmitTitle()">
-                            <input type="text" class="form-control" formControlName="name" placeholder="Search here..." ng-minlength="1" required>
+                            <input type="text" class="form-control" formControlName="name" placeholder="Search here..." ng-minlength="1º" required>
                             <button type="submit"><i class="icofont-search"></i></button>
                         </form>
                     </div>
@@ -50,7 +50,7 @@
                         </h3>
                         <div *ngFor="let category of categories">
                             <ul>
-                                <li><a href="/category-details/{{category.slug}}">{{category.name}} ({{category.totalArticles}})</a></li>                            
+                                <li><a (click)="filterArticlesByCategory(category.id)">{{category.name}} ({{category.totalArticles}})</a></li>                            
                             </ul>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                             Tags
                         </h3>
                         <div class="tagcloud" *ngFor="let tags of tagsRandom">
-                            <a routerLink="/tags-details/{{tags.slug}}" style="color:#828893">{{tags.name}}</a>                        
+                            <a (click)="filterArticlesByTag(tags.id)" style="color:#828893">{{tags.name}}</a>                        
                         </div>
                     </div>                    
                 </div>

@@ -78,6 +78,7 @@ export class BlogTwoComponent implements OnInit {
       );
     }
     
+    
   }
 
   
@@ -113,6 +114,30 @@ export class BlogTwoComponent implements OnInit {
     this.tagsService.getAllTagsRandom().subscribe(      
       data=>{      
         this.tagsRandom=data['content'];
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+
+  filterArticlesByCategory(categoryId:number){
+    this.articlesService.filterArticlesByCategory(categoryId,0).subscribe(      
+      data=>{      
+        this.articles=data['content'];
+        this.pages = new Array(data['totalPages']);       
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+
+  filterArticlesByTag(tagId:number){
+    this.articlesService.filterArticlesByTag(tagId,0).subscribe(      
+      data=>{      
+        this.articles=data['content'];
+        this.pages = new Array(data['totalPages']);       
       },
       (error)=>{
         console.log("Error");
