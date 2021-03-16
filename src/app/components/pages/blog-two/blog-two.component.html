@@ -8,14 +8,40 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
-                <app-list-articles></app-list-articles> 
+                <div class="row">
+                    <div class="col-lg-6 col-md-6" *ngFor="let article of articles">
+                        <div class="single-blog-post">
+                            <div class="blog-image">
+                                <a routerLink="/blog-details/{{article.slug}}"><img src="{{article.mainImage}}" alt="image"></a>                
+                            </div>
+                            <div class="blog-post-content">
+                                <h3><a routerLink="/blog-details/{{article.slug}}">{{article.title}}</a> | <span>{{article.createdDate}}</span></h3>
+                                <p>{{article.description}}</p>
+                                <a routerLink="/blog-details/{{article.slug}}" class="read-more-btn">Read More <i class="icofont-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="pagination-area">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item"><a class="page-link" href="#"><i class="icofont-double-left"></i></a></li>
+                                    <li class="page-item" *ngFor="let page of pages;let i=index">                                      
+                                        <a class="page-link" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+                                      </li>
+                                    <li class="page-item"><a class="page-link" href="#"><i class="icofont-double-right"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div> 
             </div>
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar">
                     <div class="widget widget_search">
-                        <form >
-                            <input type="text" class="form-control" placeholder="Search here...">
-                            <button><i class="icofont-search"></i></button>
+                        <form [formGroup]="mandoForm" (ngSubmit)="onFormSubmitTitle()">
+                            <input type="text" class="form-control" formControlName="name" placeholder="Search here..." ng-minlength="1º" required>
+                            <button type="submit"><i class="icofont-search"></i></button>
                         </form>
                     </div>
                     <div class="widget widget_categories">
@@ -24,7 +50,7 @@
                         </h3>
                         <div *ngFor="let category of categories">
                             <ul>
-                                <li><a href="/category-details/{{category.slug}}">{{category.name}} ({{category.totalArticles}})</a></li>                            
+                                <li><a (click)="filterArticlesByCategory(category.id)">{{category.name}} ({{category.totalArticles}})</a></li>                            
                             </ul>
                         </div>
                     </div>
@@ -49,7 +75,7 @@
                             Tags
                         </h3>
                         <div class="tagcloud" *ngFor="let tags of tagsRandom">
-                            <a routerLink="/tags-details/{{tags.slug}}" style="color:#828893">{{tags.name}}</a>                        
+                            <a (click)="filterArticlesByTag(tags.id)" style="color:#828893">{{tags.name}}</a>                        
                         </div>
                     </div>                    
                 </div>
