@@ -23,7 +23,7 @@ export class BlogTwoComponent implements OnInit {
   categories: Category[];
   articlesRandom:Article[];
   tagsRandom:Tags[];
-
+  title:String;
   constructor(
     private categoriesService : CategoriesService , 
     private articlesService : ArticlesService ,
@@ -43,7 +43,8 @@ export class BlogTwoComponent implements OnInit {
    }
 
    onFormSubmitTitle(): void {
-        this.articlesService.filterArticlesByName(this.mandoForm.get('name').value,0).subscribe(      
+      this.title = this.mandoForm.get('name').value;
+        this.articlesService.filterArticlesByName(this.title,0).subscribe(      
         data=>{      
           this.articles=data['content'];
           this.pages = new Array(data['totalPages']);    

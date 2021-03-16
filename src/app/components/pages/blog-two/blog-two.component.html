@@ -40,7 +40,7 @@
                 <div class="sidebar">
                     <div class="widget widget_search">
                         <form [formGroup]="mandoForm" (ngSubmit)="onFormSubmitTitle()">
-                            <input type="text" class="form-control" formControlName="name" placeholder="Search here...">
+                            <input type="text" class="form-control" formControlName="name" placeholder="Search here..." ng-minlength="1" required>
                             <button type="submit"><i class="icofont-search"></i></button>
                         </form>
                     </div>
