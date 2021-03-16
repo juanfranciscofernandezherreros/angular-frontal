@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-
+import { Observable } from 'rxjs';
 @Injectable()
 export class ArticlesService {
 
@@ -29,6 +29,10 @@ export class ArticlesService {
 
     filterArticlesByName(title:String , page:number){
         return this.http.get(this.articles+"/api/public/v1/articles?title="+title+"&page="+page);
+    }
+
+    getArticleBySlug(slug:String) : Observable<any>{
+        return this.http.get(this.articles+"/api/public/v1/article?slug="+slug);
     }
 
 }

@@ -1,6 +1,6 @@
 <section class="page-title-area item-bg3">
     <div class="container">
-        <h2>Blog Details</h2>
+        <h2>{{article.title}}</h2>
     </div>
 </section>
 
@@ -10,48 +10,44 @@
             <div class="col-lg-8 col-md-12">
                 <div class="blog-details">
                     <div class="post-image">
-                        <img src="assets/img/blog1.jpg" alt="image">
+                        <img src="{{article.mainImage}}" alt="image">
                     </div>
-                    <h3>The Most Popular New top Business Apps</h3>
+                    <h3>{{article.title}}</h3>
                     <div class="blog-meta">
-                        <ul>
-                            <li><i class="icofont-ui-user"></i> <a href="#">Admin</a></li>
-                            <li><i class="icofont-clock-time"></i> June 20, 2020</li>
-                            <li><i class="icofont-comment"></i> <a href="#">6 Comments</a></li>
-                            <li><i class="icofont-ui-folder"></i> <a href="#">Event</a></li>
+                        <ul>                                                      
+                            <li><i class="icofont-ui-user"></i> <a>{{article.user.username}}</a></li>
+                            <li><i class="icofont-clock-time"></i> {{article.createdDate}}</li>
+                            <li><i class="icofont-comment"></i> <a>{{article.totalComments}} Comments</a></li>                            
                         </ul>
                     </div>
-                    <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in that some form by injected humour or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum you need to be sure there isn’t anything of embarrassing. There are many that an variations of passages of Lorem Ipsum available but the majority have suffered alteration in that some form by a injected humour or randomised words which don’t look even of slightly believable. If you are going to use a the passage of Lorem Ipsum you need to be sure there isn’t anything embarrassing.</p>
-                    <blockquote class="blockquote">
-                        <p>There are many variations of passages of Lorem the Ipsum available but the that as that majority have is suffered alteration.</p>
-                    </blockquote>
-                    <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in that some form by injected humour or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum you need to be sure there isn’t anything of embarrassing.</p>
-                    <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in that some form by injected humour or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum you need to be sure there isn’t anything of embarrassing.</p>
-                    <p>Randomised words which don’t look even slightly believable. If you are going a to use a passage you need to be sure there isn’t anything embarrassing. Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    
+                    <p>{{article.content}}</p>                   
                 </div>
                 <div class="post-tag-media">
                     <div class="row h-100 align-items-center">
                         <div class="col-lg-6 col-md-7">
                             <ul class="tag">
                                 <li><span>Tags:</span></li>
-                                <li><a href="#">Event,</a></li>
-                                <li><a href="#">App,</a></li>
-                                <li><a href="#">Software</a></li>
+                                <p>
+                                <div *ngFor="let tag of article.tags">
+                                    <li><i class="icofont-ui-folder"></i> <a> {{tag.name}} </a></li> 
+                               </div>
                             </ul>
                         </div>
                         <div class="col-lg-6 col-md-5">
-                            <ul class="social-share">
-                                <li><span>Share on:</span></li>
-                                <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+                            <ul class="tag">
+                                <li><span>Category:</span></li>
+                                <p>
+                                <div *ngFor="let category of article.categories">
+                                    <li><i class="icofont-ui-folder"></i> <a> {{category.name}} </a></li> 
+                               </div>
+                               
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div id="comments" class="comments-area">
-                    <h2 class="comments-title">3 Comments</h2>
+                    <h2 class="comments-title">{{article.totalComments}} Comments</h2>
                     <ol class="comment-list">
                         <li class="comment">
                             <article class="comment-body">
