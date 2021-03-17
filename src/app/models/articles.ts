@@ -1,6 +1,7 @@
 import { Category } from "./category";
 import { Tags } from "./tags";
 import { User } from "./user";
+import { Comentarios } from "./comentarios";
 
 export class Article {
     title:string;
@@ -12,4 +13,5 @@ export class Article {
     totalComments:number;
     categories:Category[];
     tags:Tags[];
+    comentarios:Comentarios[];
 }

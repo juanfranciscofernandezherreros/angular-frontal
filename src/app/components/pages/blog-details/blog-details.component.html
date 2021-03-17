@@ -48,75 +48,29 @@
                 </div>
                 <div id="comments" class="comments-area">
                     <h2 class="comments-title">{{article.totalComments}} Comments</h2>
-                    <ol class="comment-list">
+                    <ol class="comment-list" *ngFor="let comentario of article.comentarios">
                         <li class="comment">
-                            <article class="comment-body">
+                            <article class="comment-body" style="margin:10px">
                                 <footer class="comment-meta">
                                     <div class="comment-author vcard">
-                                        <img src="assets/img/author1.jpg" alt="image" class="avatar">
-                                        <b class="fn">John Smith</b>
+                                        <img src="{{comentario.authorComment.imageProfile}}" alt="image" class="avatar">
+                                        <b class="fn">{{comentario.authorComment.username}}</b>
                                         <span class="says">says:</span>
                                     </div>
                                     <div class="comment-metadata">
                                         <a href="#">
-                                            March 28, 2020 at 7:16 am
+                                            {{comentario.createdDate}}
                                         </a>
                                     </div>
                                 </footer>
                                 <div class="comment-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                                    <p>{{comentario.contenido}}</p>
                                 </div>
                                 <div class="reply">
                                     <a href="#" rel="nofollow" class="comment-reply-link">Reply</a>
                                 </div>
-                            </article>
-                            <ol class="children">
-                                <li class="comment">
-                                    <article class="comment-body">
-                                        <footer class="comment-meta">
-                                            <div class="comment-author vcard">
-                                                <img src="assets/img/author2.jpg" alt="image" class="avatar">
-                                                <b class="fn">Steven Warner</b>
-                                                <span class="says">says:</span>
-                                            </div>
-                                            <div class="comment-metadata">
-                                                <a href="#">
-                                                    March 28, 2020 at 7:16 am
-                                                </a>
-                                            </div>
-                                        </footer>
-                                        <div class="comment-content">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                                        </div>
-                                        <div class="reply">
-                                            <a href="#" rel="nofollow" class="comment-reply-link">Reply</a>
-                                        </div>
-                                    </article>
-                                </li>
-                            </ol>
-                        </li>
-                        <li class="comment">
-                            <article class="comment-body">
-                                <footer class="comment-meta">
-                                    <div class="comment-author vcard">
-                                        <img src="assets/img/author3.jpg" alt="image" class="avatar">
-                                        <b class="fn">John Smith</b>
-                                        <span class="says">says:</span>
-                                    </div>
-                                    <div class="comment-metadata">
-                                        <a href="#">
-                                            March 28, 2020 at 7:16 am
-                                        </a>
-                                    </div>
-                                </footer>
-                                <div class="comment-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                                </div>
-                                <div class="reply">
-                                    <a href="#" rel="nofollow" class="comment-reply-link">Reply</a>
-                                </div>
-                            </article>
-                        </li>
+                            </article>                            
+                        </li>                        
                     </ol>
                     <div id="respond" class="comment-respond">
                         <h3 class="comment-reply-title">Leave a Reply</h3>
