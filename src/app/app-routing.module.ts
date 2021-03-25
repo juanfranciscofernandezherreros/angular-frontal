@@ -48,12 +48,12 @@ const routes: Routes = [
     {path: 'home-20', component: HomeTwentyComponent},
     {path: 'blog-1', component: BlogOneComponent},
     {path: 'blog-2', component: BlogTwoComponent},
-    {path: 'blog-details', component: BlogDetailsComponent},
+    {path: 'blog-details/:slug', component: BlogDetailsComponent},
     {path: 'error', component: ErrorComponent},
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
