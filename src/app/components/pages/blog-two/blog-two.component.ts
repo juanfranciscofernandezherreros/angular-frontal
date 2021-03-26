@@ -31,19 +31,19 @@ export class BlogTwoComponent implements OnInit {
     private fb: FormBuilder
   ) { }
 
-  mandoForm = new FormGroup({
+  searchTitle = new FormGroup({
     name: new FormControl(),
   });
 
   ngOnInit() {
-    this.getAllArticlesOrderedByCreationDate(this.mandoForm.get('name').value,0);
+    this.getAllArticlesOrderedByCreationDate(this.searchTitle.get('name').value,0);
     this.getAllCategories();
     this.getAllTagsRandom();
     this.getAllArticlesRandom();
    }
 
    onFormSubmitTitle(): void {
-      this.title = this.mandoForm.get('name').value;
+      this.title = this.searchTitle.get('name').value;
         this.articlesService.filterArticlesByName(this.title,0).subscribe(      
         data=>{      
           this.articles=data['content'];
@@ -57,7 +57,7 @@ export class BlogTwoComponent implements OnInit {
 
   getAllArticlesOrderedByCreationDate(name:String,page:number){
     if(name!=null){
-      this.articlesService.filterArticlesByName(this.mandoForm.get('name').value,page).subscribe(      
+      this.articlesService.filterArticlesByName(this.searchTitle.get('name').value,page).subscribe(      
         data=>{      
           this.articles=data['content'];
           this.pages = new Array(data['totalPages']);    
@@ -85,7 +85,7 @@ export class BlogTwoComponent implements OnInit {
   setPage(i,event:any){
     event.preventDefault();
     this.page=i;
-    this.getAllArticlesOrderedByCreationDate(this.mandoForm.get('name').value,this.page);    
+    this.getAllArticlesOrderedByCreationDate(this.searchTitle.get('name').value,this.page);    
   }
 
   getAllCategories(){

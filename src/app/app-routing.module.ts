@@ -26,13 +26,13 @@ import { BlogDetailsComponent } from './components/pages/blog-details/blog-detai
 import { ErrorComponent } from './components/pages/error/error.component';
 
 const routes: Routes = [
-    {path: '', component: BlogTwoComponent},   
+    {path: '', component: BlogTwoComponent},
     {path: 'blog-details/:slug', component: BlogDetailsComponent},
     {path: 'error', component: ErrorComponent},
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

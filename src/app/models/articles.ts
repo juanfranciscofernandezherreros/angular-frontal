@@ -4,6 +4,7 @@ import { User } from "./user";
 import { Comentarios } from "./comentarios";
 
 export class Article {
+    id:number;
     title:string;
     slug:string;
     mainImage:string;
