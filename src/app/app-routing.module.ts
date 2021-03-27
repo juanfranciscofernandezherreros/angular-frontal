@@ -31,6 +31,7 @@ const routes: Routes = [
     {path: 'category/:category', component: BlogTwoComponent},
     {path: 'tag/:tag', component: BlogTwoComponent},
     {path: 'articles/:title', component: BlogTwoComponent},
+    {path: 'user/:username', component: BlogTwoComponent},
     {path: 'error', component: ErrorComponent},
 ];
 

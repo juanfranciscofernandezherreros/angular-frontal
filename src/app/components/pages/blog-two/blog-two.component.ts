@@ -42,7 +42,7 @@ export class BlogTwoComponent implements OnInit {
   });
 
   ngOnInit() {
-    if(this.route.snapshot.paramMap.get('category')==null && this.route.snapshot.paramMap.get('tag')==null && this.route.snapshot.paramMap.get('title')==null){
+    if(this.route.snapshot.paramMap.get('category')==null && this.route.snapshot.paramMap.get('tag')==null && this.route.snapshot.paramMap.get('title')==null && this.route.snapshot.paramMap.get('username')==null){
       this.getAllArticlesOrderedByCreationDate(this.searchTitle.get('name').value,0);
     }
     this.getAllCategories();
@@ -61,6 +61,22 @@ export class BlogTwoComponent implements OnInit {
       this.getAllArticlesOrderedByName(this.route.snapshot.paramMap.get('title'));
     }
 
+    if(this.route.snapshot.paramMap.get('username')!=null){
+      this.getAllArticlesOrdereredByUsername(this.route.snapshot.paramMap.get('username'));
+    }
+
+   }
+
+   getAllArticlesOrdereredByUsername(username:String){
+    this.articlesService.filterArticlesByUsername(username,0).subscribe(      
+      data=>{      
+        this.articles=data['content'];
+        this.pages = new Array(data['totalPages']);       
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
    }
 
    getAllArticlesOrderedByName(name:String){
