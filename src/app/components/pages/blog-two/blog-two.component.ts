@@ -42,27 +42,42 @@ export class BlogTwoComponent implements OnInit {
   });
 
   ngOnInit() {
-    
-    this.getAllArticlesOrderedByCreationDate(this.searchTitle.get('name').value,0);
+    if(this.route.snapshot.paramMap.get('category')==null && this.route.snapshot.paramMap.get('tag')==null && this.route.snapshot.paramMap.get('title')==null){
+      this.getAllArticlesOrderedByCreationDate(this.searchTitle.get('name').value,0);
+    }
     this.getAllCategories();
     this.getAllTagsRandom();
     this.getAllArticlesRandom();
 
     if(this.route.snapshot.paramMap.get('category')!=null){
-      alert("Category" + this.route.snapshot.paramMap.get('category'))
       this.getAllArticlesOrderedByCategory(this.route.snapshot.paramMap.get('category'),0);
     }
 
     if(this.route.snapshot.paramMap.get('tag')!=null){
-      alert("Tag" + this.route.snapshot.paramMap.get('tag'))
       this.getAllArticlesOrderedByTags(this.route.snapshot.paramMap.get('tag'),0);
+    }
+
+    if(this.route.snapshot.paramMap.get('title')!=null){
+      this.getAllArticlesOrderedByName(this.route.snapshot.paramMap.get('title'));
     }
 
    }
 
+   getAllArticlesOrderedByName(name:String){
+      this.articlesService.filterArticlesByName(name,0).subscribe(      
+        data=>{      
+          this.articles=data['content'];
+          this.pages = new Array(data['totalPages']);    
+        },
+        (error)=>{
+          console.log("Error");
+        }
+      );
+  }
+
    onFormSubmitTitle(): void {
       this.title = this.searchTitle.get('name').value;
-        this.articlesService.filterArticlesByName(this.title,0).subscribe(      
+      this.articlesService.filterArticlesByName(this.title,0).subscribe(      
         data=>{      
           this.articles=data['content'];
           this.pages = new Array(data['totalPages']);    
@@ -94,7 +109,6 @@ export class BlogTwoComponent implements OnInit {
   }
 
   getAllArticlesOrderedByTags(tags:String,page:number){
-    alert("Tag" + tags);
     this.tagsService.getTagBySlug(tags).subscribe(      
       data=>{      
         this.articlesService.filterArticlesByTag(data.id,0).subscribe(      
