@@ -23,6 +23,11 @@ export class ArticlesService {
         return this.http.get(this.articles+"/api/public/v1/articles?categoriesSlug="+category+"&page="+page);
     }
 
+    filterArticlesByUsername(username:String,page:number){
+        return this.http.get(this.articles+"/api/public/v1/articles?username="+username+"&page="+page);
+
+    }
+
     filterArticlesByCategory(categoryId:number , page:number){
         return this.http.get(this.articles+"/api/public/v1/articles?categories="+categoryId+"&page="+page);
     }
