@@ -19,6 +19,10 @@ export class ArticlesService {
         return this.http.get(this.articles+"/api/public/v1/articles/random");
     }
 
+    filterArticlesByCategoryString(category:String , page:number){
+        return this.http.get(this.articles+"/api/public/v1/articles?categoriesSlug="+category+"&page="+page);
+    }
+
     filterArticlesByCategory(categoryId:number , page:number){
         return this.http.get(this.articles+"/api/public/v1/articles?categories="+categoryId+"&page="+page);
     }
