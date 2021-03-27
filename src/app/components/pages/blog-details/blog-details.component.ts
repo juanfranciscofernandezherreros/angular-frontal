@@ -30,6 +30,11 @@ export class BlogDetailsComponent implements OnInit {
   author:String;
   email:String;
 
+  page : number = 0;
+  pages: Array<number>;
+
+  title:String;
+
   constructor(
     private route: ActivatedRoute,
     private categoriesService : CategoriesService , 
@@ -42,11 +47,17 @@ export class BlogDetailsComponent implements OnInit {
 
      }
 
+
+     searchTitle = new FormGroup({
+      name: new FormControl(),
+    });
+  
   ngOnInit() {
     this.articlesService.getArticleBySlug(this.route.snapshot.paramMap.get('slug')).subscribe(      
       data=>{      
         this.article = data;  
     })
+    
     this.getAllCategories();
     this.getAllTagsRandom();
     this.getAllArticlesRandom();
@@ -84,6 +95,19 @@ export class BlogDetailsComponent implements OnInit {
       }
     );
   }
+
+  onFormSubmitTitle(): void {
+    this.title = this.searchTitle.get('name').value;
+      this.articlesService.filterArticlesByName(this.title,0).subscribe(      
+      data=>{      
+        this.articles=data['content'];
+        this.pages = new Array(data['totalPages']);    
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+} 
 
   onFormSubmitComment(): void {    
     this.model.articleId=this.article.id;

@@ -28,6 +28,8 @@ import { ErrorComponent } from './components/pages/error/error.component';
 const routes: Routes = [
     {path: '', component: BlogTwoComponent},
     {path: 'blog-details/:slug', component: BlogDetailsComponent},
+    {path: 'category/:category', component: BlogTwoComponent},
+    {path: 'tag/:tag', component: BlogTwoComponent},
     {path: 'error', component: ErrorComponent},
 ];
 

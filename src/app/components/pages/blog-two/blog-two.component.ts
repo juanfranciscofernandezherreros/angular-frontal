@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {Category} from "src/app/models/category";
 import {Article} from "src/app/models/articles";
 import {CategoriesService} from "src/app/services/categories/categories.service";
@@ -15,20 +16,25 @@ import { FormBuilder, FormGroup, FormControl , Validators} from '@angular/forms'
 
 })
 export class BlogTwoComponent implements OnInit {
-
+  article:Article[];
   articles:Article[];
   page : number = 0;
   pages: Array<number>;
   articleForm: FormGroup;
   categories: Category[];
+  category: Category[];
+
   articlesRandom:Article[];
   tagsRandom:Tags[];
   title:String;
   constructor(
+    private route: ActivatedRoute,
     private categoriesService : CategoriesService , 
     private articlesService : ArticlesService ,
     private tagsService : TagsService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
+
   ) { }
 
   searchTitle = new FormGroup({
@@ -36,10 +42,22 @@ export class BlogTwoComponent implements OnInit {
   });
 
   ngOnInit() {
+    
     this.getAllArticlesOrderedByCreationDate(this.searchTitle.get('name').value,0);
     this.getAllCategories();
     this.getAllTagsRandom();
     this.getAllArticlesRandom();
+
+    if(this.route.snapshot.paramMap.get('category')!=null){
+      alert("Category" + this.route.snapshot.paramMap.get('category'))
+      this.getAllArticlesOrderedByCategory(this.route.snapshot.paramMap.get('category'),0);
+    }
+
+    if(this.route.snapshot.paramMap.get('tag')!=null){
+      alert("Tag" + this.route.snapshot.paramMap.get('tag'))
+      this.getAllArticlesOrderedByTags(this.route.snapshot.paramMap.get('tag'),0);
+    }
+
    }
 
    onFormSubmitTitle(): void {
@@ -54,6 +72,47 @@ export class BlogTwoComponent implements OnInit {
         }
       );
   } 
+
+  getAllArticlesOrderedByCategory(category:String,page:number){
+      this.categoriesService.getCategoryBySlug(category).subscribe(      
+        data=>{      
+          this.category= data;
+          this.articlesService.filterArticlesByCategory(data.id,0).subscribe(      
+            data=>{      
+              this.articles=data["content"];
+              this.pages = new Array(data['totalPages']);
+            },
+            (error)=>{
+              console.log("Error");
+            }
+          );
+        },
+        (error)=>{
+          console.log("Error");
+        }
+      );
+  }
+
+  getAllArticlesOrderedByTags(tags:String,page:number){
+    alert("Tag" + tags);
+    this.tagsService.getTagBySlug(tags).subscribe(      
+      data=>{      
+        this.articlesService.filterArticlesByTag(data.id,0).subscribe(      
+          data=>{      
+            this.articles=data["content"];
+            this.pages = new Array(data['totalPages']);
+          },
+          (error)=>{
+            console.log("Error");
+          }
+        );
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+}
+
 
   getAllArticlesOrderedByCreationDate(name:String,page:number){
     if(name!=null){

@@ -106,7 +106,7 @@
                         </h3>
                         <div *ngFor="let category of categories">
                             <ul>
-                                <li><a href="/category-details/{{category.slug}}">{{category.name}} ({{category.totalArticles}})</a></li>                            
+                                <li><a href="category/{{category.slug}}">{{category.name}} ({{category.totalArticles}})</a></li>                            
                             </ul>
                         </div>
                     </div>
@@ -117,10 +117,11 @@
                             <ul>
                                 <div *ngFor="let article of articlesRandom" style="margin-top: 20px;">
                                 <li>
-                                        <a routerLink="/blog-details/{{article.slug}}">
+
+                                        <a href="/blog-details/{{article.slug}}">
                                             <img src="https://avurn-ng.envytheme.com/assets/img/blog1.jpg" alt="image">
                                         </a>
-                                        <h5><a routerLink="/blog-details/{{article.slug}}">{{article.title}}</a></h5>
+                                        <h5><a href="/blog-details/{{article.slug}}">{{article.title}}</a></h5>
                                         <p class="date">{{article.createdDate}}</p>
                                 </li>  
                                 </div>                         
@@ -131,7 +132,7 @@
                             Tags
                         </h3>
                         <div class="tagcloud" *ngFor="let tags of tagsRandom">
-                            <a routerLink="/tags-details/{{tags.slug}}" style="color:#828893">{{tags.name}}</a>                        
+                            <a href="tag/{{tags.slug}}" style="color:#828893">{{tags.name}}</a>                        
                         </div>
                     </div>                    
                 </div>
