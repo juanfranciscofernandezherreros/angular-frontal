@@ -30,6 +30,7 @@ const routes: Routes = [
     {path: 'blog-details/:slug', component: BlogDetailsComponent},
     {path: 'category/:category', component: BlogTwoComponent},
     {path: 'tag/:tag', component: BlogTwoComponent},
+    {path: 'articles/:title', component: BlogTwoComponent},
     {path: 'error', component: ErrorComponent},
 ];
 

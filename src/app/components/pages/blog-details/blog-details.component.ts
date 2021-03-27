@@ -48,7 +48,7 @@ export class BlogDetailsComponent implements OnInit {
      }
 
 
-     searchTitle = new FormGroup({
+    searchTitle = new FormGroup({
       name: new FormControl(),
     });
   
@@ -98,16 +98,8 @@ export class BlogDetailsComponent implements OnInit {
 
   onFormSubmitTitle(): void {
     this.title = this.searchTitle.get('name').value;
-      this.articlesService.filterArticlesByName(this.title,0).subscribe(      
-      data=>{      
-        this.articles=data['content'];
-        this.pages = new Array(data['totalPages']);    
-      },
-      (error)=>{
-        console.log("Error");
-      }
-    );
-} 
+    this.router.navigateByUrl('articles/'+this.title);
+  } 
 
   onFormSubmitComment(): void {    
     this.model.articleId=this.article.id;
