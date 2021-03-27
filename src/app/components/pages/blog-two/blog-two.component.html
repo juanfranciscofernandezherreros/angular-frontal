@@ -53,23 +53,7 @@
                                 <li><a (click)="filterArticlesByCategory(category.id)">{{category.name}} ({{category.totalArticles}})</a></li>                            
                             </ul>
                         </div>
-                    </div>
-                    <div class="widget widget_recent_entries">
-                        <h3 class="widget-title">
-                            Articles
-                        </h3>
-                            <ul>
-                                <div *ngFor="let article of articlesRandom" style="margin-top: 20px;">
-                                <li>
-                                        <a routerLink="/blog-details/{{article.slug}}">
-                                            <img src="https://avurn-ng.envytheme.com/assets/img/blog1.jpg" alt="image">
-                                        </a>
-                                        <h5><a href="/blog-details/{{article.slug}}">{{article.title}}</a></h5>
-                                        <p class="date">{{article.createdDate}}</p>
-                                </li>  
-                                </div>                         
-                            </ul>
-                    </div>
+                    </div>                    
                     <div class="widget widget_tag_cloud">
                         <h3 class="widget-title">
                             Tags
