@@ -50,7 +50,7 @@
                         </h3>
                         <div *ngFor="let category of categories">
                             <ul>
-                                <li><a (click)="filterArticlesByCategory(category.id)">{{category.name}} ({{category.totalArticles}})</a></li>                            
+                                <li><a href="category/{{category.slug}}">{{category.name}} ({{category.totalArticles}})</a></li>                            
                             </ul>
                         </div>
                     </div>                    
@@ -59,7 +59,7 @@
                             Tags
                         </h3>
                         <div class="tagcloud" *ngFor="let tags of tagsRandom">
-                            <a (click)="filterArticlesByTag(tags.id)" style="color:#828893">{{tags.name}}</a>                        
+                            <a href="tag/{{tags.slug}}" style="color:#828893">{{tags.name}}</a>                        
                         </div>
                     </div>                    
                 </div>
