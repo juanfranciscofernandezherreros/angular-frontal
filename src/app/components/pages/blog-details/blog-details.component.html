@@ -54,7 +54,7 @@
                                 <footer class="comment-meta">
                                     <div class="comment-author vcard">
                                         <img src="{{comentario.authorComment.imageProfile}}" alt="image" class="avatar">
-                                        <b class="fn">{{comentario.authorComment.username}}</b>
+                                        #{{comentario.id}} <b>{{comentario.authorComment.username}}</b> Respondiendo a #{{comentario.parentId}}
                                         <span class="says">says:</span>
                                     </div>
                                     <div class="comment-metadata">
@@ -67,7 +67,7 @@
                                     <p>{{comentario.contenido}}</p>
                                 </div>
                                 <div class="reply">
-                                    <a href="#" rel="nofollow" class="comment-reply-link">Reply</a>
+                                    <a href="blog-details/{{article.slug}}/answer/{{comentario.id}}" rel="nofollow" class="comment-reply-link" >Reply</a>
                                 </div>
                             </article>                            
                         </li>                        

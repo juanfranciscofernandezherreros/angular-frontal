@@ -17,5 +17,9 @@ export class CommentsService {
     return this.http.post(this.comments+"/api/protected/v1/comment", comentario);
   }
 
+  getCommentById(commentId: string) : Observable<any>{
+    return this.http.get(this.comments+"/api/public/v1/comment?commentId="+commentId);
+  }
+
 
 }
