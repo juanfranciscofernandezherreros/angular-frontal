@@ -117,7 +117,8 @@ export class BlogDetailsAnswerComponent implements OnInit {
     this.model.level=this.comentario.level+1;
     this.commentsService.createComment(this.model)        
     .subscribe(data => {    
-      this.comentario = data;          
+      this.comentario = data;       
+      window.location.replace('/blog-details/'+this.article.slug);   
     }, error => console.log(error)); 
   } 
 }
