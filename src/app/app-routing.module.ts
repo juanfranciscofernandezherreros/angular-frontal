@@ -23,11 +23,14 @@ import { HomeTwentyComponent } from './components/pages/home-twenty/home-twenty.
 import { BlogOneComponent } from './components/pages/blog-one/blog-one.component';
 import { BlogTwoComponent } from './components/pages/blog-two/blog-two.component';
 import { BlogDetailsComponent } from './components/pages/blog-details/blog-details.component';
+import { BlogDetailsAnswerComponent } from './components/pages/blog-details-answer/blog-details-answer.component';
+
 import { ErrorComponent } from './components/pages/error/error.component';
 
 const routes: Routes = [
     {path: '', component: BlogTwoComponent},
     {path: 'blog-details/:slug', component: BlogDetailsComponent},
+    {path: 'blog-details/:slug/answer/:commentId', component: BlogDetailsAnswerComponent},
     {path: 'category/:category', component: BlogTwoComponent},
     {path: 'tag/:tag', component: BlogTwoComponent},
     {path: 'title/:title', component: BlogTwoComponent},

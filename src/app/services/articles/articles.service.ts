@@ -15,6 +15,10 @@ export class ArticlesService {
         return this.http.get(this.articles+"/api/public/v1/articles?page="+page);
     }
 
+    getAllArticles(page:number){
+        return this.http.get(this.articles+"/api/public/v1/articles?pages="+page);
+    }
+
     getAllArticlesRandom(){
         return this.http.get(this.articles+"/api/public/v1/articles/random");
     }

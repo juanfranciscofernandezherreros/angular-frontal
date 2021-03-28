@@ -47,6 +47,7 @@ export class BlogTwoComponent implements OnInit {
     if(this.route.snapshot.paramMap.get('category')==null && this.route.snapshot.paramMap.get('tag')==null && this.route.snapshot.paramMap.get('title')==null && this.route.snapshot.paramMap.get('username')==null){
       this.getAllArticlesOrderedByCreationDate(this.searchTitle.get('name').value,0);
     }
+
     this.getAllCategories();
     this.getAllTagsRandom();
     this.getAllArticlesRandom();
@@ -160,30 +161,36 @@ export class BlogTwoComponent implements OnInit {
         }
       );
     }
-    
+
     
   }
-
   
   setPage(i,event:any){
-    this.href = this.router.url;  
-    const urlSegment = this.router.parseUrl(this.href).root.children['primary'].segments[0];
-    const val = new String(urlSegment);
+    this.href = this.router.url;      
     event.preventDefault();
     this.page=i;
-    if(val == "category"){
-      this.getAllArticlesOrderedByCategory(this.route.snapshot.paramMap.get('category'),this.page);
-    }
-    if(val == "tag"){
-      this.getAllArticlesOrderedByTags(this.route.snapshot.paramMap.get('tag'),this.page);
-    }
-    if(val == "user"){
-      this.getAllArticlesOrdereredByUsername(this.route.snapshot.paramMap.get('username'),this.page);
-    }
-    if(val == "title"){
-      this.getAllArticlesOrderedByName(this.route.snapshot.paramMap.get('title'),this.page);
+    this.getAllArticles(this.page);
+    if (this.href === "/") {
+      this.getAllArticles(this.page);
+    }else{
+      const urlSegment = this.router.parseUrl(this.href).root.children['primary'].segments[0];
+      const val = new String(urlSegment); 
+      if(val == "category"){
+        this.getAllArticlesOrderedByCategory(this.route.snapshot.paramMap.get('category'),this.page);
+      }
+      if(val == "tag"){
+        this.getAllArticlesOrderedByTags(this.route.snapshot.paramMap.get('tag'),this.page);
+      }
+      if(val == "user"){
+        this.getAllArticlesOrdereredByUsername(this.route.snapshot.paramMap.get('username'),this.page);
+      }
+      if(val == "title"){
+        this.getAllArticlesOrderedByName(this.route.snapshot.paramMap.get('title'),this.page);
+      }
     }
 
+    
+    
   }
    
 
@@ -243,4 +250,16 @@ export class BlogTwoComponent implements OnInit {
       }
     );
   }
+
+  getAllArticles(page:number){
+    this.articlesService.getAllArticlesOrderedByCreationDate(this.page).subscribe(      
+      data=>{      
+        this.articles=data['content'];
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+
 }

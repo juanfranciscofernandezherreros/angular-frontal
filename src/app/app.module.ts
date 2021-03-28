@@ -50,7 +50,9 @@ import { HomeTwentyComponent } from './components/pages/home-twenty/home-twenty.
 import { BlogOneComponent } from './components/pages/blog-one/blog-one.component';
 import { BlogTwoComponent } from './components/pages/blog-two/blog-two.component';
 import { BlogDetailsComponent } from './components/pages/blog-details/blog-details.component';
+import { BlogDetailsAnswerComponent } from './components/pages/blog-details-answer/blog-details-answer.component';
 import { ErrorComponent } from './components/pages/error/error.component';
+
 import { DemoSidebarComponent } from './components/layouts/demo-sidebar/demo-sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomHttpInterceptorService } from './interceptors/CustomHttpInterceptorService';
@@ -109,7 +111,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BlogDetailsComponent,
     ErrorComponent,
     DemoSidebarComponent,
-    ListArticlesComponent
+    ListArticlesComponent,
+    BlogDetailsAnswerComponent
   ],
   imports: [
     BrowserModule,
