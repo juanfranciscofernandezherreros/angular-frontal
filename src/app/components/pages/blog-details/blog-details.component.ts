@@ -98,7 +98,7 @@ export class BlogDetailsComponent implements OnInit {
 
   onFormSubmitTitle(): void {
     this.title = this.searchTitle.get('name').value;
-    this.router.navigateByUrl('articles/'+this.title);
+    window.location.replace('/title/'+this.title);
   } 
 
   onFormSubmitComment(): void {    
