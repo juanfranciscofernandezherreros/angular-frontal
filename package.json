@@ -47,6 +47,9 @@
         "typescript": "^4.0.7"
       }
     },
+    "engines": {
+      "node": "6.11.1"
+    }, 
     "node_modules/@angular-devkit/architect": {
       "version": "0.1102.6",
       "resolved": "https://registry.npmjs.org/@angular-devkit/architect/-/architect-0.1102.6.tgz",
