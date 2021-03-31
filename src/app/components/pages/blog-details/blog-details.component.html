@@ -30,7 +30,7 @@
                                 <li><span>Tags:</span></li>
                                 <p>
                                 <div *ngFor="let tag of article.tags">
-                                    <li><i class="icofont-ui-folder"></i> <a> {{tag.name}} </a></li> 
+                                    <li><i class="icofont-ui-folder"></i> <a href="/tag/{{tag.slug}}"> {{tag.name}} </a></li> 
                                </div>
                             </ul>
                         </div>
@@ -39,7 +39,7 @@
                                 <li><span>Category:</span></li>
                                 <p>
                                 <div *ngFor="let category of article.categories">
-                                    <li><i class="icofont-ui-folder"></i> <a> {{category.name}} </a></li> 
+                                    <li><i class="icofont-ui-folder"></i> <a href="/category/{{category.slug}}"> {{category.name}} </a></li> 
                                </div>
                                
                             </ul>
@@ -54,7 +54,7 @@
                                 <footer class="comment-meta">
                                     <div class="comment-author vcard">
                                         <img src="{{comentario.authorComment.imageProfile}}" alt="image" class="avatar">
-                                        #{{comentario.id}} <b>{{comentario.authorComment.username}}</b> Respondiendo a #{{comentario.parentId}}
+                                        #{{comentario.id}} <b>{{comentario.authorComment.username}}</b> <span *ngIf="comentario.parentId > 0"> Respondiendo a #{{comentario.parentId}}</span>
                                         <span class="says">says:</span>
                                     </div>
                                     <div class="comment-metadata">
