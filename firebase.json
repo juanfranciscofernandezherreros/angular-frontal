@@ -1,10 +1,6 @@
 {
-  "emulators": {},  
-  "projects": {
-     "default": "blog-project-e374a"
-  },
   "hosting": {
-    "public": "public",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
