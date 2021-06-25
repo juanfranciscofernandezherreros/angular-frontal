@@ -1,7 +1,7 @@
 {
   "emulators": {},  
   "projects": {
-     "default": "angular-frontal"
+     "default": "blog-project-e374a"
   },
   "hosting": {
     "public": "public",
