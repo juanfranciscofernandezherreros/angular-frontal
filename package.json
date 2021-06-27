@@ -3,6 +3,13 @@
   "version": "1.2.0",
   "lockfileVersion": 2,
   "requires": true,
+  "scripts": {
+    "clean": "npx del dist",
+    "prebuild": "npm run clean",
+    "build:prod": "ELEVENTY_ENV=prod npx eleventy",
+    "predeploy": "npm run build:prod",
+    "deploy": "npx firebase deploy",
+  },
   "packages": {
     "": {
       "name": "avurn-ng",
