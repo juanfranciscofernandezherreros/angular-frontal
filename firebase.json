@@ -1,11 +1,5 @@
 {
   "hosting": {
-    "public": "dist",
-    "cleanUrls": "true",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
+      "public": "dist/avurn-ng"
   }
 }
