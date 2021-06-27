@@ -11,8 +11,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install Dependencies
-        run: npm install      
+        run: npm install
       - name: Build
-        run: ng build --prod
+        run: npm run build --prod      
       - name: Deploy to Firebase
-        run: firebase deploy        
+        run: firebase deploy
+        
