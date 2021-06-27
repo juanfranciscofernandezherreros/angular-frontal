@@ -21,4 +21,4 @@ jobs:
         with:
           args: deploy --only hosting
         env:
-          FIREBASE_TOKEN: YOUR_FIREBASE_TOKEN_HERE
+          FIREBASE_TOKEN: FIREBASE_SERVICE_ACCOUNT_DATA_ROOKERY_250418
