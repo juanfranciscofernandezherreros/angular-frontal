@@ -1,16 +1,25 @@
-name: Build Angular App and Deploy on Firebase
+name: deploy_to_firebase_hosting
+
 on:
   push:
     branches:
-      - develop
+    - develop
+    - release/*
+
 jobs:
-  build:
-    name: Build & Deploy
+  firebase-deploy:
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      - name: Install Dependencies
-        run: npm install
-      - name: Build
-        run: npm run deploy      
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@master
+      with:
+        node-version: '12.x'
+    - run: npm install
+    - run: npm run build:prod
+    - uses: w9jds/firebase-action@master
+      with:
+        args: deploy --only hosting
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
