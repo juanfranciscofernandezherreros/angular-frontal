@@ -4,11 +4,7 @@
   "lockfileVersion": 2,
   "requires": true,
   "scripts": {
-    "clean": "npx del dist",
-    "prebuild": "npm run clean",
-    "build:prod": "ELEVENTY_ENV=prod npx eleventy",
-    "predeploy": "npm run build:prod",
-    "deploy": "npx firebase deploy"
+    "build": "npm run build"
   },
   "packages": {
     "": {
@@ -54,7 +50,6 @@
         "typescript": "^4.0.7"
       }
     },
-    
     "node_modules/@angular-devkit/architect": {
       "version": "0.1102.6",
       "resolved": "https://registry.npmjs.org/@angular-devkit/architect/-/architect-0.1102.6.tgz",
