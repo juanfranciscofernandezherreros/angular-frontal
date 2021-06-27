@@ -1,23 +1,24 @@
-
-# main.yml
+name: Build Angular App and Deploy on Firebase
+on:
+  push:
+    branches:
+      - develop
 jobs:
   build:
+    name: Build & Deploy
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v1
-
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.16
-
-      - name: Install dependencies
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
         run: npm install
-
-      - name: Build & deploy
-        run: npm run deploy
+      - name: Build
+        run: npm run build
+      - name: Run Tests
+        run: npm run test
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@v1.5.0
+        with:
+          args: deploy --only hosting
         env:
-          CI: true
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DATA_ROOKERY_250418 }}
+          FIREBASE_TOKEN: YOUR_FIREBASE_TOKEN_HERE
