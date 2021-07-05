@@ -20,8 +20,7 @@
                             <li><i class="icofont-comment"></i> <a>{{article.totalComments}} Comments</a></li>                            
                         </ul>
                     </div>
-                    
-                    <p>{{article.content}}</p>                   
+                    <div [innerHTML]="htmlString"></div>
                 </div>
                 <div class="post-tag-media">
                     <div class="row h-100 align-items-center">

@@ -29,10 +29,11 @@ export class BlogDetailsComponent implements OnInit {
   content:String;
   author:String;
   email:String;
+  comment:String;
 
   page : number = 0;
   pages: Array<number>;
-
+  htmlString: String;
   title:String;
 
   constructor(
@@ -55,6 +56,7 @@ export class BlogDetailsComponent implements OnInit {
   ngOnInit() {
     this.articlesService.getArticleBySlug(this.route.snapshot.paramMap.get('slug')).subscribe(      
       data=>{      
+        this.htmlString = data.content;
         this.article = data;  
     })
     

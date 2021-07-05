@@ -12,10 +12,10 @@
                     <div class="col-lg-6 col-md-6" *ngFor="let article of articles">
                         <div class="single-blog-post">
                             <div class="blog-image">
-                                <a routerLink="/blog-details/{{article.slug}}"><img src="{{article.mainImage}}" alt="image"></a>                
+                                <a routerLink="/blog-details/{{article.slug}}"><img src="{{article.mainImage}}" alt="image" style="width:411px;height:212px"></a>                
                             </div>
                             <div class="blog-post-content">
-                                <h3><a routerLink="/blog-details/{{article.slug}}">{{article.title}}</a> | <span>{{article.createdDate}}</span></h3>
+                                <h3><a routerLink="/blog-details/{{article.slug}}">{{article.title}}</a></h3>
                                 <p>{{article.description}}</p>
                                 <a routerLink="/blog-details/{{article.slug}}" class="read-more-btn">Read More <i class="icofont-double-right"></i></a>
                             </div>
