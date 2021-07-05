@@ -28,3 +28,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 https://stackoverflow.com/questions/65849026/errors-after-npm-audit-fix-angular-10-0-1
+
+Cannot find module '@angular-devkit/build-angular/package.json'
