@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  blogs: 'http://localhost:8092'
+  blogs: 'https://servicio-articles.herokuapp.com'
 };
 
 /*
